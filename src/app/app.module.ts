@@ -5,17 +5,55 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PotasioComponent } from './potasio/potasio.component';
 
-import { CommonsModule } from './commons/commons.module'
+import { CommonsModule } from './commons/commons.module';
+import { ColoresModule } from './colores/colores.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavegacionComponent } from './navegacion/navegacion.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { DirecFormComponent } from './direc-form/direc-form.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ArbolComponent } from './arbol/arbol.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { ArrastrarYSoltarComponent } from './arrastrar-ysoltar/arrastrar-ysoltar.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PotasioComponent
+    PotasioComponent,
+    NavegacionComponent,
+    DirecFormComponent,
+    ArbolComponent,
+    ArrastrarYSoltarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonsModule
+    CommonsModule,
+    ColoresModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatInputModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatTreeModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]
