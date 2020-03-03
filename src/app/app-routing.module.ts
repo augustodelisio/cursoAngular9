@@ -16,6 +16,8 @@ import { DirecFormComponent } from './direc-form/direc-form.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ArrastrarYSoltarComponent } from './arrastrar-ysoltar/arrastrar-ysoltar.component';
 import { ArbolComponent } from './arbol/arbol.component';
+import { TableroComponent } from './tablero/tablero.component';
+import { TablaComponent } from './tabla/tabla.component';
 
 
 const routes: Routes = [
@@ -26,7 +28,9 @@ const routes: Routes = [
     children: [
       { path: "address-form", component: DirecFormComponent },
       { path: "tree", component: ArbolComponent },
-      { path: "drag-drop", component: ArrastrarYSoltarComponent }
+      { path: "drag-drop", component: ArrastrarYSoltarComponent },
+      { path: "dashboard", component: TableroComponent},
+      { path: "table", component: TablaComponent}
     ]
   }
   /*

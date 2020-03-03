@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { PlaceholderService } from '../services/placeholder.service';
+import { Usuario, Address } from '../models/user.model'
 
 @Component({
   selector: 'app-direc-form',
   templateUrl: './direc-form.component.html',
   styleUrls: ['./direc-form.component.css']
 })
-export class DirecFormComponent {
+export class DirecFormComponent implements OnInit {
+  
+  
   addressForm = this.fb.group({
+    id: null,
+    name: null,
+    username: null,
+    address: null,
+    phone: null
+    /*
     company: null,
     firstName: [null, Validators.required],
     lastName: [null, Validators.required],
@@ -18,9 +28,9 @@ export class DirecFormComponent {
     postalCode: [null, Validators.compose([
       Validators.required, Validators.minLength(5), Validators.maxLength(5)])
     ],
-    shipping: ['free', Validators.required]
+    shipping: ['free', Validators.required]*/
   });
-
+/*
   hasUnitNumber = false;
 
   states = [
@@ -84,10 +94,30 @@ export class DirecFormComponent {
     {name: 'Wisconsin', abbreviation: 'WI'},
     {name: 'Wyoming', abbreviation: 'WY'}
   ];
+  */
+  constructor(private fb: FormBuilder, private placeh: PlaceholderService) { }
 
-  constructor(private fb: FormBuilder) {}
+  async ngOnInit() {
+    let usuario = await this.placeh.getOneUser(3);
+    console.log(usuario);
+    this.addressForm.controls.id.setValue(usuario.id)
+    this.addressForm.controls.name.setValue(usuario.name)
+    this.addressForm.controls.username.setValue(usuario.username)
+    this.addressForm.controls.address.setValue(usuario.address.city)
+    this.addressForm.controls.phone.setValue(usuario.phone)
+    
+  }
 
+  usu:Usuario= {} as Usuario;
   onSubmit() {
-    alert('Thanks!');
+    console.log(this.addressForm.controls.name.value)
+    let myusu : Usuario = {} as Usuario;
+    myusu.name = this.addressForm.controls.name.value
+    myusu.username = this.addressForm.controls.username.value
+    myusu.address = {} as Address;
+    myusu.address.city = this.addressForm.controls.address.value
+    myusu.phone = this.addressForm.controls.phone.value
+    this.placeh.updateOneUser(myusu.id, myusu).subscribe(x=>{console.log(x)})
+    
   }
 }

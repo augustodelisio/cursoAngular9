@@ -25,6 +25,13 @@ import { ArbolComponent } from './arbol/arbol.component';
 import { MatTreeModule } from '@angular/material/tree';
 import { ArrastrarYSoltarComponent } from './arrastrar-ysoltar/arrastrar-ysoltar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { TableroComponent } from './tablero/tablero.component';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatMenuModule } from '@angular/material/menu';
+import { TablaComponent } from './tabla/tabla.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -34,6 +41,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     DirecFormComponent,
     ArbolComponent,
     ArrastrarYSoltarComponent,
+    TableroComponent,
+    TablaComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatCardModule,
     ReactiveFormsModule,
     MatTreeModule,
-    DragDropModule
+    DragDropModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]
