@@ -7,16 +7,16 @@
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Id" formControlName="id">
+            <input matInput placeholder="Nombre" formControlName="name">
           </mat-form-field>
         </div>
       </div>
       <div class="row">
         <div class="col">
           <mat-form-field class="full-width">
-            <input matInput placeholder="Nombre" formControlName="name">
-            <mat-error *ngIf="addressForm.controls['name'].hasError('required')">
-              First name is <strong>required</strong>
+            <input matInput placeholder="Id" formControlName="id">
+            <mat-error *ngIf="addressForm.controls['id'].hasError('required')">
+              El Id es <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -24,7 +24,7 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Usuario" formControlName="username">
             <mat-error *ngIf="addressForm.controls['username'].hasError('required')">
-              Last name is <strong>required</strong>
+              El nombre de usuario es <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
@@ -44,7 +44,7 @@
           <mat-form-field class="full-width">
             <textarea matInput placeholder="Telefono" formControlName="phone"></textarea>
             <mat-error *ngIf="addressForm.controls['phone'].hasError('required')">
-              Address is <strong>required</strong>
+              El telefono es <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>

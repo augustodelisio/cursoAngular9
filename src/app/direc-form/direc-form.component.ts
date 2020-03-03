@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { PlaceholderService } from '../services/placeholder.service';
 import { Usuario, Address } from '../models/user.model'
 
@@ -12,7 +12,7 @@ export class DirecFormComponent implements OnInit {
   
   
   addressForm = this.fb.group({
-    id: null,
+    id: new FormControl({ value: null, disabled: true}), 
     name: null,
     username: null,
     address: null,
@@ -112,6 +112,7 @@ export class DirecFormComponent implements OnInit {
   onSubmit() {
     console.log(this.addressForm.controls.name.value)
     let myusu : Usuario = {} as Usuario;
+    myusu.id = this.addressForm.controls.id.value
     myusu.name = this.addressForm.controls.name.value
     myusu.username = this.addressForm.controls.username.value
     myusu.address = {} as Address;
