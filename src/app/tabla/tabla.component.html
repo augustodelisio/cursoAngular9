@@ -39,6 +39,10 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
+  <ng-container>
+    <button (click)="nuevoUsu()"> Nuevo Usuario </button>
+  </ng-container>
+
   <mat-paginator #paginator
       [length]="dataSource?.data.length"
       [pageIndex]="0"

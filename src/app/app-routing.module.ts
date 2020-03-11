@@ -27,11 +27,12 @@ const routes: Routes = [
     path: "", component: NavegacionComponent,
     children: [
       { path: "address-form", component: DirecFormComponent },
-      { path: "address-form/edit/:id", component: DirecFormComponent},
+      { path: "address-form/edit/:id", component: DirecFormComponent },
+      { path: "address-form/new", component: DirecFormComponent },
       { path: "tree", component: ArbolComponent },
       { path: "drag-drop", component: ArrastrarYSoltarComponent },
-      { path: "dashboard", component: TableroComponent},
-      { path: "table", component: TablaComponent}
+      { path: "dashboard", component: TableroComponent },
+      { path: "table", component: TablaComponent }
     ]
   }
   /*
@@ -64,7 +65,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

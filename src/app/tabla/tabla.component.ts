@@ -40,6 +40,6 @@ export class TablaComponent implements AfterViewInit, OnInit {
   }
 
   public nuevoUsu() {
-    this.ruta.navigate(["address-form/new/"])
+    this.ruta.navigate(["address-form/new"])
   }
 }

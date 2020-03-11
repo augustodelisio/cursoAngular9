@@ -28,4 +28,8 @@ export class PlaceholderService {
     return this.httpClient.put<Usuario>("https://jsonplaceholder.typicode.com/users/"+numId, usu);
   }
 
+  createUser (usu: Usuario): void {
+    this.httpClient.post<Usuario>("https://jsonplaceholder.typicode.com/users", usu);
+  }
+
 }
