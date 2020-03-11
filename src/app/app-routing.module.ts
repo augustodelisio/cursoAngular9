@@ -27,6 +27,7 @@ const routes: Routes = [
     path: "", component: NavegacionComponent,
     children: [
       { path: "address-form", component: DirecFormComponent },
+      { path: "address-form/edit/:id", component: DirecFormComponent},
       { path: "tree", component: ArbolComponent },
       { path: "drag-drop", component: ArrastrarYSoltarComponent },
       { path: "dashboard", component: TableroComponent},

@@ -3,15 +3,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
+import { Usuario } from '../models/user.model';
+import { PlaceholderService } from '../services/placeholder.service';
+import { EventEmitter } from '@angular/core';
 
 // TODO: Replace this with your own data model type
-export interface TablaItem {
-  name: string;
-  id: number;
-}
 
 // TODO: replace this with real data from your application
-const EXAMPLE_DATA: TablaItem[] = [
+/*const EXAMPLE_DATA: TablaItem[] = [
   {id: 1, name: 'Hydrogen'},
   {id: 2, name: 'Helium'},
   {id: 3, name: 'Lithium'},
@@ -33,19 +32,27 @@ const EXAMPLE_DATA: TablaItem[] = [
   {id: 19, name: 'Potassium'},
   {id: 20, name: 'Calcium'},
 ];
-
+*/
 /**
  * Data source for the Tabla view. This class should
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class TablaDataSource extends DataSource<TablaItem> {
-  data: TablaItem[] = EXAMPLE_DATA;
+
+ export class TablaDataSource extends DataSource<Usuario> {
+  data: Usuario[] = [];
   paginator: MatPaginator;
   sort: MatSort;
+  emisorEvento: EventEmitter<Boolean> = new EventEmitter();
 
-  constructor() {
+  constructor(placeh: PlaceholderService) {
     super();
+    placeh.getUsersAlt().subscribe(
+      datos=>{
+        this.data = datos
+        this.emisorEvento.emit(true)
+      }
+    )
   }
 
   /**
@@ -53,13 +60,14 @@ export class TablaDataSource extends DataSource<TablaItem> {
    * the returned stream emits new items.
    * @returns A stream of the items to be rendered.
    */
-  connect(): Observable<TablaItem[]> {
+  connect(): Observable<Usuario[]> {
     // Combine everything that affects the rendered data into one update
     // stream for the data-table to consume.
     const dataMutations = [
       observableOf(this.data),
       this.paginator.page,
-      this.sort.sortChange
+      this.sort.sortChange,
+      this.emisorEvento
     ];
 
     return merge(...dataMutations).pipe(map(() => {
@@ -77,7 +85,7 @@ export class TablaDataSource extends DataSource<TablaItem> {
    * Paginate the data (client-side). If you're using server-side pagination,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getPagedData(data: TablaItem[]) {
+  private getPagedData(data: Usuario[]) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     return data.splice(startIndex, this.paginator.pageSize);
   }
@@ -86,7 +94,7 @@ export class TablaDataSource extends DataSource<TablaItem> {
    * Sort the data (client-side). If you're using server-side sorting,
    * this would be replaced by requesting the appropriate data from the server.
    */
-  private getSortedData(data: TablaItem[]) {
+  private getSortedData(data: Usuario[]) {
     if (!this.sort.active || this.sort.direction === '') {
       return data;
     }
